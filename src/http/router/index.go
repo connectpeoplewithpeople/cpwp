@@ -7,7 +7,7 @@ import (
 )
 
 func GetIndex(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "/prod", http.StatusSeeOther)
+	http.Redirect(w, r, "/prod/", http.StatusSeeOther)
 }
 
 func GetFavicon(w http.ResponseWriter, r *http.Request) {
