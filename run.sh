@@ -9,8 +9,13 @@ GOPATH=$(cd "$(dirname "$0")" && pwd)
 GOBIN=${GOPATH}/bin
 DOWNLOAD_PATH=${GOPATH}/var/download
 PATH=$PATH:${GOROOT}/bin
+
 STAGING=real
-export GOROOT GOPATH PATH STAGING
+
+DATABASE_ADDR=labf.co.kr
+DATABASE_ID=cpwp
+DATABASE_PW=q2w3e4!@#
+export GOROOT GOPATH PATH STAGING DATABASE_ADDR DATABASE_ID DATABASE_PW
 
 ##################################################################
 # DIRECTORY
@@ -27,22 +32,6 @@ case $1 in
         mkdir -p ${DOWNLOAD_PATH}
         cd ${DOWNLOAD_PATH}
 
-        # go
-        wget https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz
-        tar xvfz go1.9.2.linux-amd64.tar.gz
-        rm -rf ${PACKAGE_PATH}/go
-        mv go ${PACKAGE_PATH}
-
-        # go package
-        cd ${GOPATH}
-
-        go get -u github.com/robfig/cron
-        go get -u github.com/gorilla/mux
-        go get -u github.com/google/uuid
-        go get -u github.com/gorilla/websocket
-        go get -u github.com/natefinch/lumberjack
-        go get -u golang.org/x/crypto/acme/autocert
-
         # npm
         yum update -y openssl
         yum install -y epel-release
@@ -56,6 +45,23 @@ case $1 in
         echo "gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB" >> /etc/yum.repos.d/MariaDB.repo
         echo "gpgcheck=1" >> /etc/yum.repos.d/MariaDB.repo
         yum install -y mariadb mariadb-server
+
+        # go
+        wget https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz
+        tar xvfz go1.9.2.linux-amd64.tar.gz
+        rm -rf ${PACKAGE_PATH}/go
+        mv go ${PACKAGE_PATH}
+
+        # go package
+        cd ${GOPATH}
+
+        go get -u github.com/robfig/cron
+        go get -u github.com/gorilla/mux
+        go get -u github.com/google/uuid
+        go get -u github.com/gorilla/websocket
+        go get -u github.com/go-sql-driver/mysql
+        go get -u github.com/natefinch/lumberjack
+        go get -u golang.org/x/crypto/acme/autocert
 
         # angular cli
         npm install -g @angular/cli

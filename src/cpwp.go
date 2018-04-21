@@ -10,8 +10,12 @@ import (
 	"http/router"
 	"http/router/api"
 	"http/middleware"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"golang.org/x/crypto/acme/autocert"
+	"storage"
+	"os"
 )
 
 func main() {
@@ -24,6 +28,23 @@ func main() {
 	common.InitalizeLogger()
 	common.Logger.Printf("[Server Initialization] Number of cores to use : %v", runtime.GOMAXPROCS(0))
 	waitSignal := &sync.WaitGroup{}
+
+	// mariaDB
+	var err error
+	storage.CpwpDB, err = sql.Open("mysql", fmt.Sprintf("%v:%v@tcp(%v:%v)/%v", common.DatabaseID, common.DatabasePW, common.DatabaseAddr, common.DatabasePort, common.DatabaseName))
+	if err != nil {
+		common.Logger.Fatalf("[MariaDB Client Initialization] Error : %v", err)
+		os.Exit(1)
+	}
+	defer storage.CpwpDB.Close()
+	cpwpDBInfo := fmt.Sprintf("%v:%v/%v", common.DatabaseAddr, common.DatabasePort, common.DatabaseName)
+	var checkVersion string
+	storage.CpwpDB.QueryRow("SELECT VERSION()").Scan(&checkVersion)
+	if checkVersion == "" {
+		common.Logger.Fatalf("[MariaDB Client Initialization] Unable To Connect Maria Database : %v", cpwpDBInfo)
+		os.Exit(1)
+	}
+	common.Logger.Printf("[MariaDB Client Initialization] Success To Connect Maria Database : %v", cpwpDBInfo)
 
 	// http
 	waitSignal.Add(1)
