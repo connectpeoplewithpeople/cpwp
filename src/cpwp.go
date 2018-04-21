@@ -37,7 +37,7 @@ func main() {
 		os.Exit(1)
 	}
 	defer storage.CpwpDB.Close()
-	common.Logger.Fatal(fmt.Sprintf("%v:%v@tcp(%v:%v)/%v", common.DatabaseID, common.DatabasePW, common.DatabaseAddr, common.DatabasePort, common.DatabaseName))
+	common.Logger.Printf(fmt.Sprintf("%v:%v@tcp(%v:%v)/%v", common.DatabaseID, common.DatabasePW, common.DatabaseAddr, common.DatabasePort, common.DatabaseName))
 	cpwpDBInfo := fmt.Sprintf("%v:%v/%v", common.DatabaseAddr, common.DatabasePort, common.DatabaseName)
 	var checkVersion string
 	storage.CpwpDB.QueryRow("SELECT VERSION()").Scan(&checkVersion)
