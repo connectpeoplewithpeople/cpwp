@@ -44,9 +44,18 @@ case $1 in
         go get -u golang.org/x/crypto/acme/autocert
 
         # npm
-        yum update openssl
-        yum install epel-release
-        yum install npm
+        yum update -y openssl
+        yum install -y epel-release
+        yum install -y npm
+
+        # mariadb
+        rm -rf /etc/yum.repos.d/MariaDB.repo
+        echo "[mariadb]" > /etc/yum.repos.d/MariaDB.repo
+        echo "name = MariaDB" >> /etc/yum.repos.d/MariaDB.repo
+        echo "baseurl = http://yum.mariadb.org/10.1/rhel7-amd64" >> /etc/yum.repos.d/MariaDB.repo
+        echo "gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB" >> /etc/yum.repos.d/MariaDB.repo
+        echo "gpgcheck=1" >> /etc/yum.repos.d/MariaDB.repo
+        yum install -y mariadb mariadb-server
 
         # angular cli
         npm install -g @angular/cli
@@ -86,7 +95,13 @@ case $1 in
     stop)
         kill -9 $(ps aux | grep -v grep | grep cpwp | awk '{print $2;}')
     ;;
+    db-start)
+        systemctl start mariadb
+    ;;
+    db-stop)
+        systemctl stop mariadb
+    ;;
     *)
-        echo './run.sh { compose | build | start | stop | build | build-go | build-angular }'
+        echo './run.sh { compose | build | start | stop | db-start | db-stop | build | build-go | build-angular }'
     ;;
 esac
