@@ -14,7 +14,7 @@ STAGING=real
 
 DATABASE_ADDR=labf.co.kr
 DATABASE_ID=cpwp
-DATABASE_PW=q2w3e4!@#
+DATABASE_PW=q2w3e4
 export GOROOT GOPATH PATH STAGING DATABASE_ADDR DATABASE_ID DATABASE_PW
 
 ##################################################################
