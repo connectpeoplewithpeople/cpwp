@@ -28,5 +28,5 @@ const HttpsPort int = 443
 var DatabaseAddr string = os.Getenv("DATABASE_ADDR")
 var DatabaseID string = os.Getenv("DATABASE_ID")
 var DatabasePW string = os.Getenv("DATABASE_PW")
-const DatabasePort int = 3306
+const DatabasePort int = 1324
 const DatabaseName string = "cpwp"
