@@ -38,6 +38,8 @@ case $1 in
         yum install -y npm
 
         # mariadb
+        wget -O /etc/yum.repos.d/MariaDB.repo http://mariadb.if-not-true-then-false.com/rhel/$(rpm -E %rhel)/$(uname -i)/10_1
+        yum install -y mariadb mariadb-server
         rm -rf /etc/yum.repos.d/MariaDB.repo
         echo "[mariadb]" > /etc/yum.repos.d/MariaDB.repo
         echo "name = MariaDB" >> /etc/yum.repos.d/MariaDB.repo
