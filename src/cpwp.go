@@ -34,25 +34,30 @@ func main() {
 		r := mux.NewRouter()
 
 		// Index - Redirect To Prod
-		r.Handle("/", middleware.SetMiddleware(http.HandlerFunc(router.GetIndex))).Methods("GET")
+		r.Handle("/", http.HandlerFunc(router.GetIndex)).Methods("GET")
 		// Favicon
-		r.Handle("/favicon.ico", middleware.SetMiddleware(http.HandlerFunc(router.GetFavicon))).Methods("GET")
+		r.Handle("/favicon.ico", http.HandlerFunc(router.GetFavicon)).Methods("GET")
 		// Static
-		r.PathPrefix("/static/").Handler(middleware.SetMiddleware(http.StripPrefix("/static/", http.FileServer(http.Dir(fmt.Sprintf("%v/static/", common.BasePath)))))).Methods("GET")
+		r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir(fmt.Sprintf("%v/static/", common.BasePath))))).Methods("GET")
 		// Angular Prod
-		r.PathPrefix("/prod/").Handler(middleware.SetMiddleware(http.StripPrefix("/prod/", http.FileServer(http.Dir(fmt.Sprintf("%v/angular/prod/", common.BasePath)))))).Methods("GET")
+		r.PathPrefix("/prod/").Handler(http.StripPrefix("/prod/", http.FileServer(http.Dir(fmt.Sprintf("%v/angular/prod/", common.BasePath))))).Methods("GET")
 
 		/******************************************************************
 		 API
 		 ******************************************************************/
 		// Status
-		r.Handle("/api/status", middleware.SetMiddleware(http.HandlerFunc(api.GetStatus))).Methods("GET")
+		r.Handle("/api/status", http.HandlerFunc(api.GetStatus)).Methods("GET")
 
 		/******************************************************************
 		 ERROR
 		 ******************************************************************/
 		// Not Found
 		r.NotFoundHandler = http.HandlerFunc(router.NotFound)
+
+		/******************************************************************
+		 Middleware
+		 ******************************************************************/
+		r.Use(middleware.SetDefaultHeaderMiddleware)
 
 		/******************************************************************
 		 SERVE by STAGING
