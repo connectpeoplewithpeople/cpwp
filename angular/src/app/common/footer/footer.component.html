@@ -1,0 +1,38 @@
+<div *ngIf="!isHide" class="transition animating in fade">
+  <div style="border-top: solid 1px #e7e9ed;">
+    <div class="ui container" style="white-space: nowrap; overflow: hidden;">
+      <div [routerLink]="['/']" class="foo-cell first">
+        소개
+      </div><div [routerLink]="['/static/policy']" class="foo-cell">
+      이용약관
+    </div><div [routerLink]="['/static/privacy']" class="foo-cell">
+      개인정보
+    </div><div [routerLink]="['/static/request']" class="foo-cell">
+      문의 및 신고
+    </div><div [routerLink]="['/static/alliance']" class="foo-cell">
+      제휴/파트너 신청
+    </div>
+    </div>
+  </div>
+  <div style="border-top: solid 1px #e7e9ed;">
+    <div class="ui container" style="margin-top: 20px; position: relative;">
+      <div style="position: absolute; left: 0px; top: 0px;">
+        <img [attr.src]="baseUrl + '/static/common/image/footer-logo.png'">
+      </div>
+      <div style="width: 100%; padding-left: 80px; font-size: 0.9rem; letter-spacing: -1px;">
+        Connect People With People - 사람과 사람을 잇다
+        <div class="separator">|</div>
+        컨텐츠 오픈 마켓 플레이스
+
+        <br>
+
+        위치 : 경기도 성남시 분당구
+        <div class="separator">|</div>
+        문의 : connectpeoplewithpeople@gmail.com
+        <div style="margin-top: 6px; margin-bottom: 24px; color: #999; font-size: 0.9rem;">
+          COPYRIGHT 2018 Connect People With People. ALL RIGHT RESERVED.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

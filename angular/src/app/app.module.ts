@@ -8,9 +8,19 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './view/index/index.component';
 import { NotfoundpageComponent } from './view/error/notfoundpage/notfoundpage.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { AllianceComponent } from './static/alliance/alliance.component';
+import { RequestComponent } from './static/request/request.component';
+import { PolicyComponent } from './static/policy/policy.component';
+import { PrivacyComponent } from './static/privacy/privacy.component';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
+  { path: 'static/policy', component: PolicyComponent },
+  { path: 'static/privacy', component: PrivacyComponent },
+  { path: 'static/request', component: RequestComponent },
+  { path: 'static/alliance', component: AllianceComponent },
   { path: '**', component: NotfoundpageComponent }
 ];
 
@@ -18,7 +28,13 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     IndexComponent,
-    NotfoundpageComponent
+    NotfoundpageComponent,
+    NavbarComponent,
+    FooterComponent,
+    AllianceComponent,
+    RequestComponent,
+    PolicyComponent,
+    PrivacyComponent
   ],
   imports: [
     RouterModule.forRoot(
