@@ -10,8 +10,11 @@ a:hover { text-decoration:none; }
 /*************************************
  * Color
  *************************************/
+.background-light-gray {
+  background: #fafafa;
+}
 .background-dark {
-  background : #24292e;
+  background: #24292e;
 }
 .background-blue-gray {
   background: #f2f4f7;
@@ -59,37 +62,6 @@ a:hover { text-decoration:none; }
 /*************************************
  * Layout
  *************************************/
-.nav-cell {
-  height: 60px;
-  margin: 0; padding: 0;
-  display:table-cell;
-  vertical-align:middle;
-  -webkit-box-align: center !important;
-  align-items: center !important;
-}
-.nav-btn {
-  border: solid 1px #fff;
-  border-radius: 3px;
-  background: none;
-  padding: 4px 8px;
-  margin-left: 2px;
-  font-size: 0.9rem;
-  letter-spacing: -1px;
-  color: #fff;
-  cursor: pointer;
-}
-.nav-btn:hover {
-  background: #fff;
-  color: #24292e;
-  transition: 0.2s all ease;
-  -webkit-transition: 0.2s all ease;
-  -moz-transition: 0.2s all ease;
-  -ms-transition: 0.2s all ease;
-  -o-transition: 0.2s all ease;
-}
-.nav-shadow {
-  box-shadow: 1px 1px 10px #888888;
-}
 .foo-cell {
   width: 20%;
   height: 32px;
@@ -105,11 +77,17 @@ a:hover { text-decoration:none; }
 .foo-cell.first {
   border-left: solid 1px #e7e9ed;
 }
-.sitemap-cell {
-  width: 20%;
-  display: table-cell;
-  vertical-align: top;
+.nav-wrap {
+  border-bottom: solid 1px #e7e9ed;
 }
+
+.min-height-nav {
+  min-height: 80px;
+}
+.min-height-body {
+  min-height: 1000px;
+}
+
 
 /*************************************
  * ETC Component
