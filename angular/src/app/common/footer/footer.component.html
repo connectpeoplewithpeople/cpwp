@@ -1,6 +1,6 @@
 <div *ngIf="!isHide" class="transition animating in fade">
   <div style="border-top: solid 1px #e7e9ed;">
-    <div class="ui container" style="white-space: nowrap; overflow: hidden;">
+    <div class="ui container min-width" style="white-space: nowrap; overflow: hidden;">
       <div [routerLink]="['/']" class="foo-cell first">
         소개
       </div><div [routerLink]="['/static/policy']" class="foo-cell">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div style="border-top: solid 1px #e7e9ed;">
-    <div class="ui container" style="margin-top: 20px; position: relative;">
+    <div class="ui container min-width" style="margin-top: 20px; position: relative;">
       <div style="position: absolute; left: 0px; top: 0px;">
         <img [attr.src]="baseUrl + '/static/common/image/footer-logo.png'">
       </div>
