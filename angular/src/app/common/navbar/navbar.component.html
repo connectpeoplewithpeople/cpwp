@@ -1,32 +1,77 @@
-<div class="nav-wrap min-height-nav">
-  <div class="ui container min-width" style="position: relative;">
-    <!-- left menu -->
-    <div class="nav-cell" style="margin-left: 24px;">
-      포스트
-    </div>
-    <div class="nav-cell">
-      동영상 강의
-    </div>
-    <div class="nav-cell">
-      컨텐츠 마켓
-    </div>
-    <div class="nav-cell">
-      개발/디자인 의뢰
-    </div>
-    <div class="nav-cell">
-      커뮤니티
-    </div>
+<div class="nav-wrap" style="border-bottom: solid 1px #e7e9ed;">
+  <!-- 추가 상단 메뉴 -->
+  <div [@scrollOffset]="scrollOffsetState">
+    <div class="ui container min-width min-height-nav nav-sub">
+      <!-- left menu -->
+      <span [routerLink]="['/']"
+            style="font-size: 22px; font-weight: 600; letter-spacing: -2px; cursor: pointer;">
+        CONNECT PEOPLE WITH PEOPLE
+      </span>
 
-    <!-- right icon -->
-    <div class="nav-right">
-      <div class="nav-right-cell">
-        <i class="envelope icon"></i>
+      <!-- right menu -->
+      <div class="right" style="line-height: 60px; letter-spacing: -1px;">
+        <!-- [!]비로그인 상태에서만 -->
+        <span class="cursor">
+          로그인
+        </span>
+        <div class="separator">|</div>
+        <span class="cursor">
+          회원가입
+        </span>
+        <div class="separator">|</div>
+
+        <span class="cursor" [routerLink]="['/static/intro']">
+          더 알아보기
+        </span>
       </div>
-      <div class="nav-right-cell">
-        <i class="bell icon"></i>
+    </div>
+  </div>
+
+
+  <!-- 기본 메뉴 -->
+  <div>
+    <div class="ui container min-width min-height-nav" style="position: relative; padding-left: 24px;">
+      <!-- left menu -->
+      <div class="nav-cell" [routerLink]="['/']">
+        홈
       </div>
-      <div class="nav-right-cell">
-        <i class="user icon"></i>
+      <div class="nav-cell">
+        포스트
+      </div>
+      <div class="nav-cell">
+        동영상 강의
+      </div>
+      <div class="nav-cell">
+        컨텐츠 마켓
+      </div>
+      <div class="nav-cell">
+        개발/디자인 의뢰
+      </div>
+      <div class="nav-cell">
+        커뮤니티
+      </div>
+
+      <!-- right icon -->
+      <div class="right" style="line-height: 48px;">
+        <div class="nav-right-cell cursor">
+          <input class="nav-search" type="text" placeholder="&#xF002; 통합검색"
+                 [@focusSearch]="focusSearchState"
+                 (focus)="focusSearchState='focus';"
+                 (blur)="focusSearchState='blur';"
+          />
+        </div>
+
+        <!-- [!] 로그인 상태에서만 -->
+        <div class="nav-right-cell cursor">
+          <i class="envelope icon"></i>
+        </div>
+        <div class="nav-right-cell cursor">
+          <i class="bell icon"></i>
+        </div>
+        <div class="nav-right-cell cursor">
+          <i class="user icon"></i>
+        </div>
+
       </div>
     </div>
   </div>

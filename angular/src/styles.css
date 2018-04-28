@@ -2,10 +2,28 @@
  * Default Tag
  *************************************/
 * { outline: none; }
+
 a:link { text-decoration:none;}
 a:visited { text-decoration:none; }
 a:active { text-decoration:underline;}
 a:hover { text-decoration:none; }
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}
+
 
 /*************************************
  * Color
@@ -83,20 +101,12 @@ a:hover { text-decoration:none; }
   left: 0;
   width: 100%;
   background: #fff;
-  border-bottom: solid 1px #e7e9ed;
 }
-.nav-right {
-  float: right;
-  line-height: 48px;
-  font-size: 20px;
-}
+
 .nav-right-cell {
-  cursor: pointer;
+  font-size: 20px;
   display: inline-block;
   margin-right: 8px;
-}
-.nav-right-cell:hover {
-  opacity: 0.6;
 }
 .nav-cell {
   color: #222;
@@ -114,6 +124,41 @@ a:hover { text-decoration:none; }
   font-weight: 600;
   border-bottom: solid 3px #222;
 }
+.nav-search {
+  font-family: Icons;
+  display: inline-block;
+  height: 30px;
+  font-size: 12px;
+  color: #222;
+  padding: 8px 4px;
+  margin: 0;
+  border: solid 1px #cbcdd1;
+  background: #fafafa;
+  border-radius: 4px;
+}
+.nav-sub {
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  padding-left: 24px;
+  line-height: 60px;
+  height: 60px;
+}
+
+/*************************************
+ * Common
+ *************************************/
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.cursor {
+  cursor: pointer;
+}
+.cursor:hover {
+  opacity: 0.6;
+}
 
 .min-width {
   min-width: 1000px;
@@ -122,7 +167,7 @@ a:hover { text-decoration:none; }
   min-height: 48px;
 }
 .min-height-body {
-  min-height: 1000px;
+  min-height: 2000px;
 }
 
 

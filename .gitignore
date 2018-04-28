@@ -19,3 +19,4 @@ var/
 *.log
 *.cache
 *.iml
+package-lock.json
