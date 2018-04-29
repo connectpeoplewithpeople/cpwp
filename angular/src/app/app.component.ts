@@ -11,6 +11,7 @@ import { StatusService } from './service/status.service';
   ]
 })
 export class AppComponent {
+  pType: number = 0;
   constructor(
     private statusService: StatusService
   ) {

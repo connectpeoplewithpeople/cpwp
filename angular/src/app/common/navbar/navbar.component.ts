@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { environment } from '../../../environments/environment';
+import { ArrayUtil } from '../../common/utility/array';
 
 @Component({
   selector: 'app-navbar',
@@ -33,9 +34,15 @@ import { environment } from '../../../environments/environment';
 export class NavbarComponent implements OnInit {
   baseUrl: string = environment.baseUrl;
 
+  @Input()
+  pType: number = 0;
+
   focusSearchState: string = 'blur'; // focus or blur
   scrollOffsetState: string = 'up'; // up or down
   prevScrollOffset: number = 0;
+
+  // UTIL
+  arrayUtil: any = ArrayUtil;
 
   constructor() { }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { environment } from './../../../environments/environment';
+import { ArrayUtil } from '../../common/utility/array';
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +10,13 @@ import { environment } from './../../../environments/environment';
 })
 export class FooterComponent implements OnInit {
   // 노출 여부
-  isHide: boolean = false;
   baseUrl: string = environment.baseUrl;
+
+  @Input()
+  pType: number = 0;
+
+  // UTIL
+  arrayUtil: any = ArrayUtil;
 
   constructor() { }
 
