@@ -19,7 +19,7 @@ import { ArrayUtil } from '../../common/utility/array';
     ]),
     trigger('scrollOffset', [
       state('up', style({
-        height: '60px',
+        height: '40px',
         display: 'block'
       })),
       state('down', style({
